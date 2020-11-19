@@ -137,7 +137,6 @@ class NWCustomerAdd extends Component {
             const success = json;
             console.log(`Response from server: ${success}.`);
             if (success){
-                alert('Pyyntö asiakkaan tallentamiseksi tehty.');
                 this.dismiss();
             }
         });
@@ -159,7 +158,7 @@ class NWCustomerAdd extends Component {
                 <input type="text" placeholder="Phone" onChange={this.handleChangePhone}/>
                 <input type="text" placeholder="Fax" onChange={this.handleChangeFax}/>
                 <br/>
-                <button type="submit">Tallenna asiakas</button>
+                <button type="submit">Save</button>
             </form>
         );
     }

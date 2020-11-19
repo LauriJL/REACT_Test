@@ -17,7 +17,8 @@ class NWCustomerDelete extends Component {
             Country: '',
             Phone: '',
             Fax: ''
-          };
+        };
+
         this.handleChangeCustomerID = this.handleChangeCustomerID.bind(this);
         this.handleChangeCompanyName = this.handleChangeCompanyName.bind(this);
         this.handleChangeContactName = this.handleChangeContactName.bind(this);
@@ -29,8 +30,7 @@ class NWCustomerDelete extends Component {
         this.handleChangeCountry = this.handleChangeCountry.bind(this);
         this.handleChangePhone = this.handleChangePhone.bind(this);
         this.handleChangeFax = this.handleChangeFax.bind(this);
-
-        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handlePerformDelete = this.handlePerformDelete.bind(this);
     }
 
     //Dismiss
@@ -41,7 +41,7 @@ class NWCustomerDelete extends Component {
     //Kuuntelijat
     handleChangeCustomerID(e) {
         var input = e.target.value;
-        this.setState({...this.state,CustomerID: input.toUpperCase()});
+        this.setState({...this.state,CustomerID:input});
     }
 
     handleChangeCompanyName(e){
@@ -95,17 +95,17 @@ class NWCustomerDelete extends Component {
     }
 
     handleSubmit(e){
-        //alert('Päivitettävä asiakas: ' + this.state.CustomerID);
+        //alert('Poistettava asiakas: ' + this.state.CustomerID);
         e.preventDefault();
         this.UpdateDatabase();
     }
 
-    // callBackRoutine() {
-    //     console.log('NWCustomerEDIT: . . . . callBackRoutine >>>---' + this.state.asiakasObj.CustomerID);											  
-    // }
+    callBackRoutine() {
+        //console.log('NWCustomerDELETE: . . . . callBackRoutine >>>---' + this.state.asiakasObj.CustomerID);											  
+    }
 
     componentDidMount() {
-        console.log("NWCustomerEDIT-componentDidMount this.props.asiakasObj.customerId: " + this.props.asiakasObj.customerId);
+        console.log("NWCustomerDELETE-componentDidMount this.props.asiakasObj.customerId: " + this.props.asiakasObj.customerId);
         this.setState({
             CustomerID: this.props.asiakasObj.customerId,
             CompanyName: this.props.asiakasObj.companyName,
@@ -116,67 +116,66 @@ class NWCustomerDelete extends Component {
             Phone: this.props.asiakasObj.phone,
             Fax: this.props.asiakasObj.fax}
             );
-            //Tutkitaan onko arvo null --> jos ei, niin viedään se stateen
-            if (this.props.asiakasObj.city) {this.setState({City: this.props.asiakasObj.city});};
-            if (this.props.asiakasObj.country) {
-                this.setState({Country: this.props.asiakasObj.country});
-            };
+        }
+
+    handlePerformDelete(event) {
+        console.log('handlePerformDelete >>>>>', this.state.CustomerID)
+        event.preventDefault();
+        this.NWDeleteCustFromRestApi();
+        }
+
+    ResetDeleteDone() {
+        console.log('ResetDeleteDone >>>>>');
+        this.setState({
+            CustomerID: '', 
+        })
+        this.handleClickTable();
+        this.GetCustFromNWRestApi();
     }
 
-    //Päivitys kantaan
-    UpdateDatabase() {
-        // Luodaan asiakasobjekti, johon haetaan state:sta tiedot                     
-        const asiakas = {CustomerID: this.state.CustomerID,
-            CompanyName: this.state.CompanyName,
-            ContactName: this.state.ContactName,
-            ContactTitle: this.state.ContactTitle,
-            Address: this.state.Address,
-            PostalCode: this.state.PostalCode,
-            City: this.state.City,
-            Country: this.state.Country,
-            Phone: this.state.Phone,
-            Fax: this.state.Fax
-        };
-        //send an asynchronous request to the backend
-        const asiakasJson = JSON.stringify(asiakas);
-        //console.log("asiakasJson = " + asiakasJson);
-        // const apiUrl= 'https://localhost:5001/northwind/customers/'+this.state.CustomerID;
-        const apiUrl= 'https://localhost:5001/northwind/customers/update/'+this.state.CustomerID
+    //Delete customer from NW database
+    NWDeleteCustFromRestApi() {
+        let apiUrl = 'https://localhost:5001/northwind/customers/delete/'+this.state.CustomerID;
+        console.log("NWDeleteRestApista " + apiUrl);
         fetch(apiUrl, {
-            method: "PUT",
+            method: "DELETE",
             headers: {
-            "Accept": "application/json",
-            "Content-Type": "application/json"
+                "Accept": "application/json",
+                "Content-Type": "application/json"
             },
-            body: asiakasJson
-        }).then((response) => response.json())
+            body: null
+            }).then((response) => response.json())
             .then((json) => {
                 const success = json;
                 console.log(`Response from server: ${success}.`);
                 if (success) {
-                    console.log("Pyyntö asiakkaan päivittämiseksi tehty -- -- -- -- --");
-                    this.dismiss();
+                //console.log("Pyyntö asiakkaan poistamiseksi tehty -- -- -- -- --");
+                this.dismiss(); 
+                //this.ResetDeleteDone();
                 }
             });
-    }
+        }
 
     render() {
         return (
-        <form className="box3" onSubmit={this.handleSubmit}>        
-            <input type="text" value={this.state.CustomerID} title="Syötä asiakastunnus" placeholder="CustomerID" onChange={this.handleChangeCustomerID} />    
-            <input type="text" value={this.state.CompanyName} placeholder="CompanyName" onChange={this.handleChangeCompanyName} />  
-            <input type="text" value={this.state.ContactName} placeholder="ContactName" onChange={this.handleChangeContactName} />    
-            <input type="text" value={this.state.ContactTitle} placeholder="ContactTitle" onChange={this.handleChangeContactTitle} />   
-            <input type="text" value={this.state.Address} placeholder="Address" onChange={this.handleChangeAddress} />   
-            <input type="text" value={this.state.PostalCode} placeholder="PostalCode" onChange={this.handleChangePostalCode} />               
-            <input type="text" value={this.state.City} placeholder="City" onChange={this.handleChangeCity} />   
-            <input type="text" value={this.state.Country} placeholder="Country" onChange={this.handleChangeCountry} />   
-            <input type="text" value={this.state.Phone} placeholder="Phone" onChange={this.handleChangePhone} />   
-            <input type="text" value={this.state.Fax} placeholder="Fax" onChange={this.handleChangeFax} />   
+        <form className="box1" onSubmit={this.handlePerformDelete}>        
+           <table id="deletetbl">  
+                <tr><td className="otsikko">Customer ID:</td><td>{this.state.customerId}</td></tr>
+                <tr><td className="otsikko">Company Name:</td><td>{this.state.CompanyName}</td></tr>
+                <tr><td className="otsikko">Contact Name:</td><td>{this.state.ContactName} </td></tr> 
+                <tr><td className="otsikko">Contact Title:</td><td>{this.state.ContactTitle} </td></tr>
+                <tr><td className="otsikko">Address:</td><td>{this.state.Address} </td></tr>
+                <tr><td className="otsikko">City:</td><td>{this.state.City} </td></tr>           
+                <tr><td className="otsikko">Region:</td><td>{this.state.Region} </td></tr>
+                <tr><td className="otsikko">Postal Code:</td><td>{this.state.PostalCode} </td></tr>
+                <tr><td className="otsikko">Country:</td><td>{this.state.Country} </td></tr>
+                <tr><td className="otsikko">Phone:</td><td>{this.state.Phone} </td></tr>
+                <tr><td className="otsikko">Fax:</td><td>{this.state.Fax} </td></tr> 
+            </table>   
             <br/>
-            <button type="submit">Talleta muutokset</button> 
+            <button className="button" type="submit">Delete</button>
         </form>
         );
     }
 }
-export default NWCustomerEdit;
+export default NWCustomerDelete;

@@ -16,15 +16,14 @@ class NWProductFetch extends Component {
         supplierid: "",
         start: 0,
         take: 10,
-        page: 1,
+        page: 0,
         visible: "table",
         renderChildAdd: true,
         renderChildEdit: true,
         renderChildDelete: true,
         yksiTuote: [],
         removeProduct: [],
-        ProductID: "",
-        ProdIDToDelete: ""
+        ProductID: ""
     };
     this.handleChangeProductName = this.handleChangeProductName.bind(this);
     this.handleChangeSupplierId = this.handleChangeSupplierId.bind(this);
@@ -33,15 +32,23 @@ class NWProductFetch extends Component {
     this.handleChildUnmountDelete = this.handleChildUnmountDelete.bind(this);
   }
   
-
   handleClickPrev = (event) => {
     let pageNumber = this.state.page;
     if (pageNumber > 0){pageNumber = pageNumber-10;}
     this.setState({page: pageNumber}, this.handleSubmit);
   }
 
+  // handleClickPrev = () => {
+  //   let startvalue = this.state.start;
+  //   if (startvalue > 0) {
+  //       startvalue = startvalue-10;
+  //   }
+  //   this.setState({start: startvalue},this.handleSubmit);
+  // }
+
   handleClickNext = (event) => {
     this.setState({page: this.state.page+10},this.handleSubmit);
+    // this.setState({start: this.state.start+10},this.handleSubmit);
   }
 
   handleChangeProductName(e){
@@ -107,7 +114,7 @@ class NWProductFetch extends Component {
   }
 
   handleChildUnmountDelete() {
-    //console.log("Ollaan NWProductFetch -handleChildUnmountDelete-rutiinissa - - - - - - ");
+    console.log("Ollaan NWProductFetch -handleChildUnmountDelete-rutiinissa - - - - - - ");
     this.setState({renderChildDelete: false});
     this.handleClickTable();
     this.HaeTuotteetNWRestApista();
@@ -116,10 +123,10 @@ class NWProductFetch extends Component {
   HaeTuotteetNWRestApista() {
     let uri = "";
     if (this.state.product !== "") {
-      uri = 'https://localhost:5001/northwind/products/r?page=' + this.state.page + '&limit=' + this.state.take + '&name=' + this.state.product;
+      uri = 'https://localhost:5001/northwind/products/r?page=' + this.state.start + '&limit=' + this.state.take + '&name=' + this.state.product;
     } 
     else if (this.state.supplierid !== "") {
-      uri = 'https://localhost:5001/northwind/products/r?page=' + this.state.page + '&limit=' + this.state.take + '&supplierid=' + this.state.supplierid;
+      uri = 'https://localhost:5001/northwind/products/r?page=' + this.state.start + '&limit=' + this.state.take + '&supplierid=' + this.state.supplierid;
     }
     else {
       uri = 'https://localhost:5001/northwind/products/r?page=' + this.state.page + '&limit=' + this.state.take;
@@ -161,12 +168,13 @@ class NWProductFetch extends Component {
       }
     }
     else {
-      viesti = "Ladataan tietoja Northwind-tietokannasta..."
+      viesti = "Retrieving data from database..."
     }
     if (this.state.visible === "table"){
       return(
         <div>
-          <h4>{viesti}</h4>
+          <h2>Products</h2>
+          {/* <h4>{viesti}</h4> */}
           <br/>
           <p>Search by product name: <input type="text" placeholder="Enter product name" title="Find product" value={this.state.product} onChange={this.handleChangeProductName}/></p>
           <p>Filter by supplier ID: <input type="text" placeholder="Enter supplier ID" title="Find supplier" value={this.state.supplierid} onChange={this.handleChangeSupplierId}/></p>
@@ -201,7 +209,7 @@ class NWProductFetch extends Component {
         <div className="box1">
           <h2>Edit Product Data</h2>
           <div>
-            <button onClick={this.handleClickTable}>Browse Customers</button>
+            <button onClick={this.handleClickTable}>Browse Products</button>
             <button onClick={this.handleClickHelp}>Help</button>
           </div>
           {this.state.renderChildEdit ? <NWProductEdit tuoteObj={this.state.yksiTuote} unmountMe={this.handleChildUnmountEdit} /> : null}
@@ -216,14 +224,14 @@ class NWProductFetch extends Component {
             <button className="button" onClick={this.handleClickTable}>Browse Customers</button>
             <button className="button" onClick={this.handleClickHelp}>Help</button>
           </div>
-          {this.state.renderChildEdit ? <NWProductDelete tuoteObj={this.state.removeProduct} unmountMe={this.handleChildUnmountDelete} /> : null}
+          {this.state.renderChildDelete ? <NWProductDelete tuoteObj={this.state.removeProduct} unmountMe={this.handleChildUnmountDelete} /> : null}
         </div>
       );
     }
     else {
       return(
         <div>
-        <h1>Sovellusvirhe! Lataa sivu uudelleen.</h1>
+        <h1>SApplication error! Reload page.</h1>
       </div>
       );
     }

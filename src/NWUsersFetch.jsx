@@ -15,7 +15,7 @@ class NWUsersFetch extends Component {
         start: 0,
         take: 10,
         visible: "table",
-        page: 1,
+        page: 0,
         firstname: "",
         lastname: "",
         accesslevel: "",

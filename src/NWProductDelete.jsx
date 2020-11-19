@@ -98,7 +98,7 @@ class NWProductDelete extends Component {
     }
 
     componentDidMount() {
-        //console.log("NWProductDELETE-componentDidMount this.props.tuoteObj.productId: " + this.props.tuoteObj.productId);
+        console.log("NWProductDELETE-componentDidMount this.props.tuoteObj.productId: " + this.props.tuoteObj.productId);
         this.setState({
             ProductID: this.props.tuoteObj.productId,
             ProductName: this.props.tuoteObj.productName,
@@ -130,7 +130,7 @@ class NWProductDelete extends Component {
 
     //Delete from database
     NWDeleteProdFromRestApi() {
-        let apiUrl = 'https://localhost:5001/northwind/products/delete/' + this.state.ProductID;
+        let apiUrl = 'https://localhost:5001/northwind/products/delete/'+this.state.ProductID;
         console.log("NWDeleteProdFromRestApi " + apiUrl);
         fetch(apiUrl, {
             method: "DELETE",

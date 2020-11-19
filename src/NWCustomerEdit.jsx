@@ -174,7 +174,7 @@ class NWCustomerEdit extends Component {
             <input type="text" value={this.state.Phone} placeholder="Phone" onChange={this.handleChangePhone} />   
             <input type="text" value={this.state.Fax} placeholder="Fax" onChange={this.handleChangeFax} />   
             <br/>
-            <button type="submit">Talleta muutokset</button> 
+            <button type="submit">Save changes</button> 
         </form>
         );
     }
