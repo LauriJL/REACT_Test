@@ -108,6 +108,7 @@ class NWCustomerFetch extends Component {
   }
 
   GetCustFromNWRestApi() {
+    let jwttoken = localStorage.getItem('token');
     let uri = "";
     if (this.state.country !== ""){
       uri = 'https://localhost:5001/northwind/customers/r?page='+this.state.page+'&limit='+this.state.take+'&country='+this.state.country;
@@ -116,12 +117,20 @@ class NWCustomerFetch extends Component {
       uri = 'https://localhost:5001/northwind/customers/r?page='+this.state.page+'&limit='+this.state.take;
       //console.log("Retrieving from REST API without country " + uri);
     }   
-    fetch(uri)
-    .then(response => response.json())
-    .then(json => {
-        //console.log(json);
-        this.setState({ asiakkaat: json }); //Viedään tulosjoukko (json) setState-komennolla asiakkaat -olioon
-    });
+    fetch(uri, {
+      method:"GET",
+      headers:{
+        Authorization:"Bearer "+jwttoken,
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+      }
+    })
+    .then((response) => response.json())
+    .then((json) => {
+        const logindata = json;
+        this.setState({ asiakkaat: logindata }); //Viedään tulosjoukko (json) setState-komennolla asiakkaat -olioon
+    }
+    )
   }
 
   render() {
@@ -147,7 +156,7 @@ class NWCustomerFetch extends Component {
       }
     }
     else {
-      viesti = "Retrieving data from database..."
+      viesti = "You do not have access to this data."
     }
 
     if (this.state.visible === "table") {

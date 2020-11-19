@@ -4,14 +4,15 @@ import AnalogWatch from './AnalogWatch';
 import NWCustomerFetch from './NWCustomerFetch';
 import NWProductFetch from './NWProductFetch';
 import NWUsersFetch from './NWUsersFetch';
-// import Helpit from './Helpit';
+import Login from './Login';
 
 class Navigaatio extends Component {
   render() {
     return (
         <Router>
             <div>
-              <h1>Northwind React Application 2020</h1>
+              <h1 style={{ marginLeft:'2%'}}>Northwind React Application 2020</h1>
+              <h4 style={{ marginLeft:'2%'}}><Login /></h4>
               <nav className="navbar navbar-expand-lg navbar-light bg-light">
               <ul className="navbar-nav mr-auto">
                 <li><Link to={'/'} className="nav-link">Home</Link></li>

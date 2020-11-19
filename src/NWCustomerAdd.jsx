@@ -103,6 +103,7 @@ class NWCustomerAdd extends Component {
 
     // Kantaan vienti
     InsertToDatabase(){
+        let jwttoken = localStorage.getItem('token');
         //Luodaan JS objekti asiakasta varten. Tiedot objektiin haetaan state:sta.
         const asiakas = {customerID: this.state.CustomerID,
                         companyName: this.state.CompanyName,
@@ -122,10 +123,11 @@ class NWCustomerAdd extends Component {
         //API-kutsu: viedään data kantaan fetchillä.
         //console.log('asiakasJSON = ' + asiakasJSON);
         const apiURL = 'https://localhost:5001/northwind/Customers/add';
-        //const apiURL = 'https://localhost:5001/northwind/Customers';
+
         fetch(apiURL, {
             method: "POST",
             headers: {
+                Authorization:"Bearer "+jwttoken,
                 "Accept": "application/json",
                 "Content-Type": "application/json"
             },
