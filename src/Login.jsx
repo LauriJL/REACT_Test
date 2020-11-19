@@ -82,7 +82,7 @@ class Login extends Component {
                     &nbsp;
                     <input type='password' className='input' placeholder='Password' onChange={this.handleChangePassword}/>
                     <br />
-                    <button type='submit' className="button">Login</button>
+                    <button type='submit' className="buttonAdd">Login</button>
                 </form>
             )
         }
@@ -90,7 +90,7 @@ class Login extends Component {
             return(
                 <>
                     <h4>You are logged in as {this.state.LoggedInUser}</h4>
-                    <button onClick={()=> this.logOut()}>Logout</button>
+                    <button onClick={()=> this.logOut()} className='buttonDelete'>Logout</button>
                 </>
             )
         }

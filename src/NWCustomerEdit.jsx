@@ -162,19 +162,18 @@ class NWCustomerEdit extends Component {
 
     render() {
         return (
-        <form className="box3" onSubmit={this.handleSubmit}>        
-            <input type="text" value={this.state.CustomerID} title="Syötä asiakastunnus" placeholder="CustomerID" onChange={this.handleChangeCustomerID} />    
-            <input type="text" value={this.state.CompanyName} placeholder="CompanyName" onChange={this.handleChangeCompanyName} />  
-            <input type="text" value={this.state.ContactName} placeholder="ContactName" onChange={this.handleChangeContactName} />    
-            <input type="text" value={this.state.ContactTitle} placeholder="ContactTitle" onChange={this.handleChangeContactTitle} />   
-            <input type="text" value={this.state.Address} placeholder="Address" onChange={this.handleChangeAddress} />   
-            <input type="text" value={this.state.PostalCode} placeholder="PostalCode" onChange={this.handleChangePostalCode} />               
-            <input type="text" value={this.state.City} placeholder="City" onChange={this.handleChangeCity} />   
-            <input type="text" value={this.state.Country} placeholder="Country" onChange={this.handleChangeCountry} />   
-            <input type="text" value={this.state.Phone} placeholder="Phone" onChange={this.handleChangePhone} />   
-            <input type="text" value={this.state.Fax} placeholder="Fax" onChange={this.handleChangeFax} />   
-            <br/>
-            <button type="submit">Save changes</button> 
+        <form className="form" onSubmit={this.handleSubmit}>        
+            <p><input type="text" className='inputForm' style={{marginTop:'10px'}} value={this.state.CustomerID} title="Syötä asiakastunnus" placeholder="CustomerID" onChange={this.handleChangeCustomerID} /></p>    
+            <p><input type="text" className='inputForm' value={this.state.CompanyName} placeholder="CompanyName" onChange={this.handleChangeCompanyName} /></p>
+            <p><input type="text" className='inputForm' value={this.state.ContactName} placeholder="ContactName" onChange={this.handleChangeContactName} /></p>   
+            <p><input type="text" className='inputForm' value={this.state.ContactTitle} placeholder="ContactTitle" onChange={this.handleChangeContactTitle} /></p>   
+            <p><input type="text" className='inputForm' value={this.state.Address} placeholder="Address" onChange={this.handleChangeAddress} /></p>   
+            <p><input type="text" className='inputForm' value={this.state.PostalCode} placeholder="PostalCode" onChange={this.handleChangePostalCode} /></p>               
+            <p><input type="text" className='inputForm' value={this.state.City} placeholder="City" onChange={this.handleChangeCity} /></p>   
+            <p><input type="text" className='inputForm' value={this.state.Country} placeholder="Country" onChange={this.handleChangeCountry} /></p>  
+            <p><input type="text" className='inputForm' value={this.state.Phone} placeholder="Phone" onChange={this.handleChangePhone} /> </p>  
+            <p><input type="text" className='inputForm' value={this.state.Fax} placeholder="Fax" onChange={this.handleChangeFax} /></p> 
+            <p><button type="submit" className='buttonAdd' style={{marginLeft:'10px'}}>Save changes</button></p> 
         </form>
         );
     }

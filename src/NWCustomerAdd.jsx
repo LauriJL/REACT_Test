@@ -147,20 +147,19 @@ class NWCustomerAdd extends Component {
     render(){
         return(
             // Lomake
-            <form className="box3" onSubmit={this.handleSubmit}>
-                <input type="text" title="Syötä asiakastunnus" placeholder="CustomerID" onChange={this.handleChangeCustomerID}/>
-                <input type="text" placeholder="CompanyName" onChange={this.handleChangeCompanyName}/>
-                <input type="text" placeholder="ContactName" onChange={this.handleChangeContactName}/>
-                <input type="text" placeholder="ContactTitle" onChange={this.handleChangeContactTitle}/>
-                <input type="text" placeholder="Address" onChange={this.handleChangeAddress}/>
-                <input type="text" placeholder="City" onChange={this.handleChangeCity}/>
-                <input type="text" placeholder="Region" onChange={this.handleChangeRegion}/>
-                <input type="text" placeholder="PostalCode" onChange={this.handleChangePostalCode}/>
-                <input type="text" placeholder="Country" onChange={this.handleChangeCountry}/>
-                <input type="text" placeholder="Phone" onChange={this.handleChangePhone}/>
-                <input type="text" placeholder="Fax" onChange={this.handleChangeFax}/>
-                <br/>
-                <button type="submit">Save</button>
+            <form className="form" onSubmit={this.handleSubmit}>
+                <p><input className='inputForm' type="text" style={{marginTop:'10px'}} placeholder="CustomerID" onChange={this.handleChangeCustomerID}/></p>
+                <p><input className='inputForm' type="text" placeholder="CompanyName" onChange={this.handleChangeCompanyName}/></p>
+                <p><input className='inputForm' type="text" placeholder="ContactName" onChange={this.handleChangeContactName}/></p>
+                <p><input className='inputForm' type="text" placeholder="ContactTitle" onChange={this.handleChangeContactTitle}/></p>
+                <p><input className='inputForm' type="text" placeholder="Address" onChange={this.handleChangeAddress}/></p>
+                <p><input className='inputForm' type="text" placeholder="City" onChange={this.handleChangeCity}/></p>
+                <p><input className='inputForm' type="text" placeholder="Region" onChange={this.handleChangeRegion}/></p>
+                <p><input className='inputForm' type="text" placeholder="PostalCode" onChange={this.handleChangePostalCode}/></p>
+                <p><input className='inputForm' type="text" placeholder="Country" onChange={this.handleChangeCountry}/></p>
+                <p><input className='inputForm' type="text" placeholder="Phone" onChange={this.handleChangePhone}/></p>
+                <p><input className='inputForm' type="text" placeholder="Fax" onChange={this.handleChangeFax}/></p>
+                <p><button type="submit" className='buttonAdd' style={{marginLeft:'10px'}}>Save</button></p>
             </form>
         );
     }

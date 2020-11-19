@@ -72,10 +72,6 @@ tr:nth-child(even) {
   margin-right: 20px;
 }
 
-.input {
-  height:40px;
-}
-
 .navlink {
   font-size: larger;
   font-weight: bold;
@@ -86,6 +82,7 @@ tr:nth-child(even) {
 .button{
   background-color: lightblue;
   cursor:pointer;
+  width:170px;
   padding: 10px;
   /* border-right: solid 1px; */
   border:none;
@@ -97,6 +94,60 @@ tr:nth-child(even) {
   font-weight: bold;
 }
 .button:hover {
+  background-color: lightgray;
+}
+
+.buttonAdd{
+  background-color: rgb(57, 202, 57);
+  cursor:pointer;
+  width:170px;
+  padding: 10px;
+  /* border-right: solid 1px; */
+  border:none;
+  border-radius: 5px;
+  margin-right: 10px;
+  margin-bottom: 15px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: medium;
+  font-weight: bold;
+}
+.buttonAdd:hover {
+  background-color: lightgray;
+}
+
+.buttonDelete{
+  background-color:rgb(207, 84, 84);
+  cursor:pointer;
+  width:170px;
+  padding: 10px;
+  /* border-right: solid 1px; */
+  border:none;
+  border-radius: 5px;
+  margin-right: 10px;
+  margin-bottom: 15px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: medium;
+  font-weight: bold;
+}
+.buttonDelete:hover {
+  background-color: lightgray;
+}
+
+.buttonEdit{
+  background-color:rgb(97, 139, 230);
+  cursor:pointer;
+  width:170px;
+  padding: 10px;
+  /* border-right: solid 1px; */
+  border:none;
+  border-radius: 5px;
+  margin-right: 10px;
+  margin-bottom: 15px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: medium;
+  font-weight: bold;
+}
+.buttonDelete:hover {
   background-color: lightgray;
 }
 
@@ -116,11 +167,37 @@ tr:nth-child(even) {
   float: left;
   font-family: Arial, Helvetica, sans-serif;
 }
-.box3 {
-  background-color: chocolate;
-  width: 235px;
-  height: 400px;
+
+.form {
+  background-color: lightblue;
+  border-radius: 10px;
+  width: 350px;
+  height: 650px;
   float: left;
+}
+
+.formLarge {
+  background-color: transparent;
+  border: solid 2px;
+  border-color: red;
+  border-radius: 10px;
+  width: 450px;
+  height: 780px;
+  float: left;
+}
+
+.edit {
+  background-color: lightblue;
+  border-radius: 10px;
+  width: 350px;
+  height: 650px;
+  float: left;
+}
+
+.inputForm {
+  margin-left: 10px;
+  margin-top:5px;
+  font-size: large;
 }
 .box4 {
   background-color: antiquewhite;

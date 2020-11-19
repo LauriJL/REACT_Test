@@ -184,8 +184,8 @@ class NWUsersFetch extends Component {
             <td>{element.username}</td>
             <td>{element.password}</td>
             <td>{element.accesslevelId}</td>
-            <td><button onClick={this.handleClickEdit.bind(this, element)}>Edit</button></td>
-            <td><button onClick={this.handleClickDelete.bind(this, element)}>Delete</button></td>
+            <td><button onClick={this.handleClickEdit.bind(this, element)} className="buttonEdit">Edit</button></td>
+            <td><button onClick={this.handleClickDelete.bind(this, element)} className="buttonDelete">Delete</button></td>
             </tr>);
       }
     }
@@ -195,17 +195,17 @@ class NWUsersFetch extends Component {
 
     if (this.state.visible === "table") {
       return (
-        <div className="box1">
+        <div className='maindiv'>
         <h2>Users</h2>
         <p>{viesti}</p>
-        <p>Search by first name: <input type="text" placeholder="Enter first name" title="Find user" value={this.state.firstname} onChange={this.handleChangeFirstName}/></p>
-        <p>Search by last name: <input type="text" placeholder="Enter product name" title="Find user" value={this.state.lastname} onChange={this.handleChangeLastName}/></p>
-        <p>Filter by saccess level: <input type="text" placeholder="Enter access level" title="Find users" value={this.state.accesslevel} onChange={this.handleChangeAccessLevel}/></p>
+        <p className='text'>Search by first name: <input type="text" placeholder="Enter first name" title="Find user" value={this.state.firstname} onChange={this.handleChangeFirstName}/></p>
+        <p className='text'>Search by last name: <input type="text" placeholder="Enter last name" title="Find user" value={this.state.lastname} onChange={this.handleChangeLastName}/></p>
+        <p className='text'>Filter by access level: <input type="text" placeholder="Enter access level" title="Find users" value={this.state.accesslevel} onChange={this.handleChangeAccessLevel}/></p>
         <br/>
+        <button className="buttonAdd" onClick={this.handleClickAdd}>Add New User</button>
         <br/>
-        <button className="button" onClick={this.handleClickAdd}>Add New User</button>
-        <button className="button" onClick={this.handleClickPrev}>Previous</button>
-        <button className="button" onClick={this.handleClickNext}>Next</button>
+        <button className="button" onClick={this.handleClickPrev}>&#8592; Previous</button>
+        <button className="button" onClick={this.handleClickNext}>Next &#8594;</button>
         <br/>
         <table className="table table-dark" id = "t01"><thead class="thead">{tHeaders}</thead><tbody class="tbody">{taulukko}</tbody></table>
       </div>
@@ -254,14 +254,14 @@ class NWUsersFetch extends Component {
         <div className="box2">
           <h2>Sovelluksen opasteet</h2>
           <button class="button" onClick={this.handleClickTable}>Browse Users</button>
-          <button class="button" onClick={this.handleClickAdd}>Add User</button>
+          <button class="buttonAdd" onClick={this.handleClickAdd}>Add User</button>
           <Helpit moduli="NWCustomerFetch"/>
         </div>
       );      
     } else {
       return(
         <div className="box1">
-        <h1>Sovellusvirhe! Lataa sivu uudelleen.</h1>
+        <h1>Application error! Reload page.</h1>
       </div>
       );     
     }

@@ -158,22 +158,22 @@ class NWCustomerDelete extends Component {
 
     render() {
         return (
-        <form className="box1" onSubmit={this.handlePerformDelete}>        
-           <table id="deletetbl">  
-                <tr><td className="otsikko">Customer ID:</td><td>{this.state.customerId}</td></tr>
-                <tr><td className="otsikko">Company Name:</td><td>{this.state.CompanyName}</td></tr>
-                <tr><td className="otsikko">Contact Name:</td><td>{this.state.ContactName} </td></tr> 
-                <tr><td className="otsikko">Contact Title:</td><td>{this.state.ContactTitle} </td></tr>
-                <tr><td className="otsikko">Address:</td><td>{this.state.Address} </td></tr>
-                <tr><td className="otsikko">City:</td><td>{this.state.City} </td></tr>           
-                <tr><td className="otsikko">Region:</td><td>{this.state.Region} </td></tr>
-                <tr><td className="otsikko">Postal Code:</td><td>{this.state.PostalCode} </td></tr>
-                <tr><td className="otsikko">Country:</td><td>{this.state.Country} </td></tr>
-                <tr><td className="otsikko">Phone:</td><td>{this.state.Phone} </td></tr>
-                <tr><td className="otsikko">Fax:</td><td>{this.state.Fax} </td></tr> 
+        <form className="formLarge" onSubmit={this.handlePerformDelete}>        
+           <table style={{marginLeft:'10px'}}>  
+                <tr className="text"><td >Customer ID:</td><td>{this.state.customerId}</td></tr>
+                <tr className="text"><td>Company Name:</td><td>{this.state.CompanyName}</td></tr>
+                <tr className="text"><td>Contact Name:</td><td>{this.state.ContactName} </td></tr> 
+                <tr className="text"><td>Contact Title:</td><td>{this.state.ContactTitle} </td></tr>
+                <tr className="text"><td>Address:</td><td>{this.state.Address} </td></tr>
+                <tr className="text"><td>City:</td><td>{this.state.City} </td></tr>           
+                <tr className="text"><td>Region:</td><td>{this.state.Region} </td></tr>
+                <tr className="text"><td>Postal Code:</td><td>{this.state.PostalCode} </td></tr>
+                <tr className="text"><td>Country:</td><td>{this.state.Country} </td></tr>
+                <tr className="text"><td>Phone:</td><td>{this.state.Phone} </td></tr>
+                <tr className="text"><td>Fax:</td><td>{this.state.Fax} </td></tr> 
             </table>   
             <br/>
-            <button className="button" type="submit">Delete</button>
+            <button className="buttonDelete" type="submit" style={{marginLeft:'10px'}}>Delete</button>
         </form>
         );
     }

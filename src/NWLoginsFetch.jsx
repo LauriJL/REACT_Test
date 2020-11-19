@@ -42,7 +42,7 @@ class NWLoginsFetch extends Component {
                 </tr>);
             }
         } else{
-            viesti = "Tietoja haetaan..."
+            viesti = "Retieving data..."
         }
         return(
             <div>

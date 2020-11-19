@@ -154,8 +154,8 @@ class NWProductFetch extends Component {
             <td>{element.unitsOnOrder}</td>
             <td>{element.reorderLevel}</td>
             <td>{element.discontinued.toString()}</td>
-            <td><button onClick={this.handleClickEdit.bind(this, element)} className="button">Edit</button></td>
-            <td><button onClick={this.handleClickDelete.bind(this, element)} className="button">Delete</button></td>
+            <td><button onClick={this.handleClickEdit.bind(this, element)} className="buttonEdit">Edit</button></td>
+            <td><button onClick={this.handleClickDelete.bind(this, element)} className="buttonDelete">Delete</button></td>
             </tr>);
       }
     }
@@ -171,9 +171,10 @@ class NWProductFetch extends Component {
           <p className='text'>Search by product name: <input type="text" placeholder="Enter product name" title="Find product" value={this.state.product} onChange={this.handleChangeProductName}/></p>
           <p className='text'>Filter by supplier ID: <input type="text" placeholder="Enter supplier ID" title="Find supplier" value={this.state.supplierid} onChange={this.handleChangeSupplierId}/></p>
           <br/>
-          <button className="button" onClick={this.handleClickAdd}>Add New Product</button>
-          <button className="button" onClick={this.handleClickPrev}>Previous</button>
-          <button className="button" onClick={this.handleClickNext}>Next</button>
+          <button className="buttonAdd" onClick={this.handleClickAdd}>Add New Product</button>
+          <br/>
+          <button className="button" onClick={this.handleClickPrev}>&#8592; Previous</button>
+          <button className="button" onClick={this.handleClickNext}>Next &#8594;</button>
           <br/>
           <table className="table table-dark">
             <thead className="thead">{tHeaders}</thead>

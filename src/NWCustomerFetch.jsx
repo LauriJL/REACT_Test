@@ -150,8 +150,8 @@ class NWCustomerFetch extends Component {
             <td>{element.address}</td>
             <td>{element.city}</td>
             <td>{element.country}</td>
-            <td><button onClick={this.handleClickEdit.bind(this, element)}>Edit</button></td>
-            <td><button onClick={this.handleClickDelete.bind(this, element)}>Delete</button></td>
+            <td><button onClick={this.handleClickEdit.bind(this, element)} className="buttonEdit">Edit</button></td>
+            <td><button onClick={this.handleClickDelete.bind(this, element)} className="buttonDelete">Delete</button></td>
             </tr>);
       }
     }
@@ -161,17 +161,17 @@ class NWCustomerFetch extends Component {
 
     if (this.state.visible === "table") {
       return (
-        <div className="box1">
+        <div className='maindiv'>
         <h2>Customers</h2>
         <p>{viesti}</p>
         <input type="text" placeholder="Filter by country" title="Filter customers by country" value={this.state.country} onChange={this.handleChangeCountry}/>
         <br/>
         <br/>
         {/* <button className="button" onClick={this.handleClickHelp}>Help</button> */}
-        <button className="button" onClick={this.handleClickAdd}>Add New Customer</button>
-        {/* <button className="button" onClick={this.handleClickTable}>Browse Customers</button> */}
-        <button className="button" onClick={this.handleClickPrev}>Previous</button>
-        <button className="button" onClick={this.handleClickNext}>Next</button>
+        <button className="button" onClick={this.handleClickAdd} className="buttonAdd">Add New Customer</button>
+        <br/>
+        <button className="button" onClick={this.handleClickPrev}>&#8592; Previous</button>
+        <button className="button" onClick={this.handleClickNext}>Next &#8594;</button>
         <br/>
         <table className="table table-dark" id = "t01"><thead class="thead">{tHeaders}</thead><tbody class="tbody">{taulukko}</tbody></table>
       </div>
@@ -179,21 +179,19 @@ class NWCustomerFetch extends Component {
     } 
     else if (this.state.visible === "addForm") {
       return (
-        <div className="box1">         
+        <div className='maindiv'>         
           <h2>Add New Customer</h2>
-          <div>
+          <div >
             <button className="button" onClick={this.handleClickTable}>Browse Customers</button>
             <button className="button" onClick={this.handleClickHelp}>Help</button>
           </div>
-
-          {/* <NWCustomerAdd /> */}
           {this.state.renderChildAdd ? <NWCustomerAdd unmountMe={this.handleChildUnmountAdd} /> : null}
         </div>
       );
     } 
     else if (this.state.visible === "editForm") {
       return (
-        <div className="box1">
+        <div className="maindiv">
           <h2>Edit Customer Data</h2>
           <div>
             <button className="button" onClick={this.handleClickTable}>Browse Customers</button>
@@ -205,7 +203,7 @@ class NWCustomerFetch extends Component {
     }
     else if (this.state.visible === "deleteForm") {
       return (
-        <div className="box1">
+        <div className="maindiv">
           <h2>Delete Customer</h2>
           <div>
             <div>
