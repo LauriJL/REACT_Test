@@ -78,10 +78,11 @@ class Login extends Component {
         if (this.state.ShowLoginForm === true) {
             return(
                 <form onSubmit={this.handleSubmit}>
-                    <input type='text' placeholder='Username' onChange={this.handleChangeUserName}/>
-                    <input type='password' placeholder='Password' onChange={this.handleChangePassword}/>
-                    <br/>
-                    <button type='submit'>Login</button>
+                    <input type='text' className='input' placeholder='Username' onChange={this.handleChangeUserName}/>
+                    &nbsp;
+                    <input type='password' className='input' placeholder='Password' onChange={this.handleChangePassword}/>
+                    <br />
+                    <button type='submit' className="button">Login</button>
                 </form>
             )
         }

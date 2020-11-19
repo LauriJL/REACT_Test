@@ -38,14 +38,6 @@ class NWProductFetch extends Component {
     this.setState({page: pageNumber}, this.handleSubmit);
   }
 
-  // handleClickPrev = () => {
-  //   let startvalue = this.state.start;
-  //   if (startvalue > 0) {
-  //       startvalue = startvalue-10;
-  //   }
-  //   this.setState({start: startvalue},this.handleSubmit);
-  // }
-
   handleClickNext = (event) => {
     this.setState({page: this.state.page+10},this.handleSubmit);
     // this.setState({start: this.state.start+10},this.handleSubmit);
@@ -162,8 +154,8 @@ class NWProductFetch extends Component {
             <td>{element.unitsOnOrder}</td>
             <td>{element.reorderLevel}</td>
             <td>{element.discontinued.toString()}</td>
-            <td><button onClick={this.handleClickEdit.bind(this, element)}>Edit</button></td>
-            <td><button onClick={this.handleClickDelete.bind(this, element)}>Delete</button></td>
+            <td><button onClick={this.handleClickEdit.bind(this, element)} className="button">Edit</button></td>
+            <td><button onClick={this.handleClickDelete.bind(this, element)} className="button">Delete</button></td>
             </tr>);
       }
     }
@@ -172,12 +164,12 @@ class NWProductFetch extends Component {
     }
     if (this.state.visible === "table"){
       return(
-        <div>
-          <h2>Products</h2>
+        <div className='maindiv'>
+          <h2 >Products</h2>
           {/* <h4>{viesti}</h4> */}
           <br/>
-          <p>Search by product name: <input type="text" placeholder="Enter product name" title="Find product" value={this.state.product} onChange={this.handleChangeProductName}/></p>
-          <p>Filter by supplier ID: <input type="text" placeholder="Enter supplier ID" title="Find supplier" value={this.state.supplierid} onChange={this.handleChangeSupplierId}/></p>
+          <p className='text'>Search by product name: <input type="text" placeholder="Enter product name" title="Find product" value={this.state.product} onChange={this.handleChangeProductName}/></p>
+          <p className='text'>Filter by supplier ID: <input type="text" placeholder="Enter supplier ID" title="Find supplier" value={this.state.supplierid} onChange={this.handleChangeSupplierId}/></p>
           <br/>
           <button className="button" onClick={this.handleClickAdd}>Add New Product</button>
           <button className="button" onClick={this.handleClickPrev}>Previous</button>
