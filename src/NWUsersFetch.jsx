@@ -213,10 +213,10 @@ class NWUsersFetch extends Component {
     } 
     else if (this.state.visible === "addForm") {
       return (
-        <div className="box1">         
+        <div className="maindiv">         
           <h2>Add New User</h2>
           <div>
-            <button className="button" onClick={this.handleClickTable}>Browse Users</button>
+            <button className="button" onClick={this.handleClickTable}>Back to Users</button>
             <button className="button" onClick={this.handleClickHelp}>Help</button>
           </div>
 
@@ -227,11 +227,11 @@ class NWUsersFetch extends Component {
     } 
     else if (this.state.visible === "editForm") {
       return (
-        <div className="box1">
+        <div className="maindiv">
           <h2>Edit User Data</h2>
           <div>
-            <button onClick={this.handleClickTable}>Browse Users</button>
-            <button onClick={this.handleClickHelp}>Help</button>
+            <button className="button" onClick={this.handleClickTable}>Back to Users</button>
+            <button className="button" onClick={this.handleClickHelp}>Help</button>
           </div>
           {this.state.renderChildEdit ? <NWUserEdit loginObj={this.state.yksiKayttaja} unmountMe={this.handleChildUnmountEdit} /> : null}
         </div>
@@ -239,10 +239,10 @@ class NWUsersFetch extends Component {
     }
     else if (this.state.visible === "deleteForm") {
       return (
-        <div className="box1">
+        <div className="maindiv">
           <h2>Delete User</h2>
           <div>
-            <button className="button" onClick={this.handleClickTable}>Browse Users</button>
+            <button className="button" onClick={this.handleClickTable}>Back to Users</button>
             <button className="button" onClick={this.handleClickHelp}>Help</button>
           </div>
           {this.state.renderChildEdit ? <NWUserDelete loginObj={this.state.removeUser} unmountMe={this.handleChildUnmountDelete} /> : null}

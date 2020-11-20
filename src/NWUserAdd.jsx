@@ -113,15 +113,15 @@ class NWUserAdd extends Component {
     render(){
         return(
             //Form
-            <form className="box3" onSubmit={this.handleSubmit}>
-                <input type="text" placeholder="Enter first name" onChange={this.handleChangeFirstName} />  
-                <input type="text" placeholder="Enter last name" onChange={this.handleChangeLastName} />    
-                <input type="text" placeholder="Enter email" onChange={this.handleChangeEmail} />   
-                <input type="text" placeholder="Enter username" onChange={this.handleChangeUserName} />   
-                <input type="text" placeholder="Enter password" onChange={this.handleChangePassword} />               
-                <input type="text" placeholder="Enter access level" onChange={this.handleChangeAccesslevelID} />      
+            <form className="formSmall" onSubmit={this.handleSubmit}>
+                <p><input className='inputForm' type="text" style={{marginTop:'10px'}} placeholder="First name" onChange={this.handleChangeFirstName} /></p> 
+                <p><input className='inputForm' type="text" placeholder="Last name" onChange={this.handleChangeLastName} /></p>   
+                <p><input className='inputForm' type="text" placeholder="Email" onChange={this.handleChangeEmail} /></p>   
+                <p><input className='inputForm' type="text" placeholder="Username" onChange={this.handleChangeUserName} /></p>   
+                <p><input className='inputForm' type="text" placeholder="Password" onChange={this.handleChangePassword} /></p>               
+                <p><input className='inputForm' type="text" placeholder="Access level" onChange={this.handleChangeAccesslevelID} /></p>      
                 <br/>
-                <button type="submit">Save Changes</button> 
+                <p><button type="submit" className='buttonAdd' style={{marginLeft:'10px'}}>Save Changes</button></p> 
             </form>
         );
     }

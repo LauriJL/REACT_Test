@@ -140,7 +140,7 @@ class NWCustomerFetch extends Component {
     let tHeaders = "";
     if (this.state.asiakkaat.length > 0) {
         //Luodaan taulukon otsikot
-        tHeaders = <tr><th>Customer Id</th><th>Company Name</th><th>Contact Name</th><th>Address</th><th>City</th><th>Country</th><th>Muokkaa</th><th>Poista</th></tr>
+        tHeaders = <tr><th>Customer ID</th><th>Company Name</th><th>Contact Name</th><th>Address</th><th>City</th><th>Country</th><th>Muokkaa</th><th>Poista</th></tr>
         for (let index = 0; index < this.state.asiakkaat.length; index++) {
             const element = this.state.asiakkaat[index];
             taulukko.push(<tr key={element.customerId}>
@@ -182,7 +182,7 @@ class NWCustomerFetch extends Component {
         <div className='maindiv'>         
           <h2>Add New Customer</h2>
           <div >
-            <button className="button" onClick={this.handleClickTable}>Browse Customers</button>
+            <button className="button" onClick={this.handleClickTable}>Back to Customers</button>
             <button className="button" onClick={this.handleClickHelp}>Help</button>
           </div>
           {this.state.renderChildAdd ? <NWCustomerAdd unmountMe={this.handleChildUnmountAdd} /> : null}
@@ -194,7 +194,7 @@ class NWCustomerFetch extends Component {
         <div className="maindiv">
           <h2>Edit Customer Data</h2>
           <div>
-            <button className="button" onClick={this.handleClickTable}>Browse Customers</button>
+            <button className="button" onClick={this.handleClickTable}>Back to Customers</button>
             <button className="button" onClick={this.handleClickHelp}>Help</button>
           </div>
           {this.state.renderChildEdit ? <NWCustomerEdit asiakasObj={this.state.yksiAsiakas} unmountMe={this.handleChildUnmountEdit} /> : null}
@@ -207,7 +207,7 @@ class NWCustomerFetch extends Component {
           <h2>Delete Customer</h2>
           <div>
             <div>
-              <button className="button" onClick={this.handleClickTable}>Browse Customers</button>
+              <button className="button" onClick={this.handleClickTable}>Back to Customers</button>
               <button className="button" onClick={this.handleClickHelp}>Help</button>
             </div>
           {this.state.renderChildDelete ? <NWCustomerDelete asiakasObj={this.state.CustomerID2Del} unmountMe={this.handleChildUnmountDelete} /> : null}

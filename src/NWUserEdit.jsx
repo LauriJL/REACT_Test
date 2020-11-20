@@ -126,15 +126,15 @@ class NWUserEdit extends Component {
 
     render() {
         return (
-        <form className="box3" onSubmit={this.handleSubmit}>
-            <input type="text" value={this.state.FirstName} placeholder="Enter first name" onChange={this.handleChangeFirstName} />  
-            <input type="text" value={this.state.LastName} placeholder="Enter last name" onChange={this.handleChangeLastName} />    
-            <input type="text" value={this.state.Email} placeholder="Enter email" onChange={this.handleChangeEmail} />   
-            <input type="text" value={this.state.UserName} placeholder="Enter username" onChange={this.handleChangeUserName} />   
-            <input type="text" value={this.state.Password} placeholder="Enter unit price" onChange={this.handleChangePassword} />               
-            <input type="text" value={this.state.AccesslevelID} placeholder="Enter accesslevel" onChange={this.handleChangeAccesslevelID} />     
+        <form className="formSmall" onSubmit={this.handleSubmit}>
+            <p><input type="text" className='inputForm' value={this.state.FirstName} style={{marginTop:'10px'}} placeholder="First name" onChange={this.handleChangeFirstName} /></p>  
+            <p><input type="text" className='inputForm' value={this.state.LastName} placeholder="Last name" onChange={this.handleChangeLastName} /></p>    
+            <p><input type="text" className='inputForm' value={this.state.Email} placeholder="Email" onChange={this.handleChangeEmail} /></p>   
+            <p><input type="text" className='inputForm' value={this.state.UserName} placeholder="Username" onChange={this.handleChangeUserName} /></p>   
+            <p><input type="text" className='inputForm' value={this.state.Password} placeholder="Unit price" onChange={this.handleChangePassword} /></p>               
+            <p><input type="text" className='inputForm' value={this.state.AccesslevelID} placeholder="Access level" onChange={this.handleChangeAccesslevelID} /></p>     
             <br/>
-            <button type="submit">Save Changes</button> 
+            <p><button type="submit" className='buttonAdd' style={{marginLeft:'10px'}}>Save Changes</button></p> 
         </form>
         );
     }

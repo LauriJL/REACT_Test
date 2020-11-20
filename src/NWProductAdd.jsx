@@ -132,18 +132,17 @@ class NWProductAdd extends Component {
     render(){
         return(
             //Form
-            <form className="box3" onSubmit={this.handleSubmit}>
-                <input type="text" placeholder="Enter product name" onChange={this.handleChangeProductName} />  
-                <input type="text" placeholder="Enter supplier ID" onChange={this.handleChangeSupplierID} />    
-                <input type="text" placeholder="Enter category ID" onChange={this.handleChangeCategoryID} />   
-                <input type="text" placeholder="Enter quantity per unit" onChange={this.handleChangeQuantityPerUnit} />   
-                <input type="text" placeholder="Enter unit price" onChange={this.handleChangeUnitPrice} />               
-                <input type="text" placeholder="Enter number of units in stock" onChange={this.handleChangeUnitsInStock} />   
-                <input type="text" placeholder="Enter number of units on order" onChange={this.handleChangeUnitsOnOrder} />   
-                <input type="text" placeholder="Enter reorder level" onChange={this.handleChangeReorderLevel} />   
-                {/* <input type="text" placeholder="Discontinued?" onChange={this.handleChangeDiscontinued} />    */}
-                <p><b>Discontinued:</b> &nbsp;
-                <label>
+            <form className="formSmall" onSubmit={this.handleSubmit}>
+                <p><input className='inputForm' type="text" style={{marginTop:'10px'}} placeholder="Product name" onChange={this.handleChangeProductName} /></p> 
+                <p><input className='inputForm' type="text" placeholder="Supplier ID" onChange={this.handleChangeSupplierID} /> </p>   
+                <p><input className='inputForm' type="text" placeholder="Category ID" onChange={this.handleChangeCategoryID} /> </p>  
+                <p><input className='inputForm' type="text" placeholder="Quantity per unit" onChange={this.handleChangeQuantityPerUnit} /> </p> 
+                <p><input className='inputForm' type="text" placeholder="Unit price" onChange={this.handleChangeUnitPrice} /> </p>              
+                <p><input className='inputForm' type="text" placeholder="Number of units in stock" onChange={this.handleChangeUnitsInStock} /> </p> 
+                <p><input className='inputForm' type="text" placeholder="Number of units on order" onChange={this.handleChangeUnitsOnOrder} /> </p>  
+                <p><input className='inputForm' type="text" placeholder="Reorder level" onChange={this.handleChangeReorderLevel} /> </p>  
+                <p className='text' style={{marginLeft:'10px'}}><b>Discontinued:</b> &nbsp;
+                <label >
                 <input type="radio" value="false" checked={this.state.Discontinued === 'false'} onChange={this.handleChangeDiscontinued}/>
                     No         
                 </label> &nbsp; &nbsp;
@@ -151,7 +150,7 @@ class NWProductAdd extends Component {
                     <input type="radio" value="true" checked={this.state.Discontinued === 'true'} onChange={this.handleChangeDiscontinued}/>
                     Yes
                 </label> </p> 
-                <button type="submit">Save Changes</button> 
+                <p><button type="submit" className='buttonAdd' style={{marginLeft:'10px'}}>Save Changes</button> </p>
             </form>
         );
     }

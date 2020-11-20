@@ -129,18 +129,18 @@ class NWUserDelete extends Component {
 
     render() {
         return (
-            <form className="box1" onSubmit={this.handlePerformDelete}>    
-            <table id="deletetbl">  
-                <tr><td className="otsikko">Login ID:</td><td>{this.state.LoginID}</td></tr>
-                <tr><td className="otsikko">First Name:</td><td>{this.state.FirstName}</td></tr>
-                <tr><td className="otsikko">Last Name:</td><td>{this.state.LastName} </td></tr> 
-                <tr><td className="otsikko">Email:</td><td>{this.state.Email} </td></tr>
-                <tr><td className="otsikko">Username:</td><td>{this.state.UserName} </td></tr>
-                <tr><td className="otsikko">Password:</td><td>{this.state.Password} </td></tr>           
-                <tr><td className="otsikko">Access Level:</td><td>{this.state.AccesslevelID} </td></tr>
+            <form className="formDelete" onSubmit={this.handlePerformDelete}>    
+            <table style={{marginLeft:'10px'}}>  
+                <tr className="text"><td>Login ID:</td><td>{this.state.LoginID}</td></tr>
+                <tr className="text"><td>First Name:</td><td>{this.state.FirstName}</td></tr>
+                <tr className="text"><td>Last Name:</td><td>{this.state.LastName} </td></tr> 
+                <tr className="text"><td>Email:</td><td>{this.state.Email} </td></tr>
+                <tr className="text"><td>Username:</td><td>{this.state.UserName} </td></tr>
+                <tr className="text"><td>Password:</td><td>{this.state.Password} </td></tr>           
+                <tr className="text"><td>Access Level:</td><td>{this.state.AccesslevelID} </td></tr>
             </table>   
             <br/>
-            <button className="button" type="submit">Delete</button>
+            <button className="buttonDelete" type="submit" style={{marginLeft:'10px'}}>Delete</button>
         </form>
         );
     }

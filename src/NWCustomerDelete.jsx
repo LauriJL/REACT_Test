@@ -158,7 +158,7 @@ class NWCustomerDelete extends Component {
 
     render() {
         return (
-        <form className="formLarge" onSubmit={this.handlePerformDelete}>        
+        <form className="formDelete" onSubmit={this.handlePerformDelete}>        
            <table style={{marginLeft:'10px'}}>  
                 <tr className="text"><td >Customer ID:</td><td>{this.state.customerId}</td></tr>
                 <tr className="text"><td>Company Name:</td><td>{this.state.CompanyName}</td></tr>

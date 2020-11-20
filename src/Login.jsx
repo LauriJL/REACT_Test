@@ -89,7 +89,7 @@ class Login extends Component {
         else {
             return(
                 <>
-                    <h4>You are logged in as {this.state.LoggedInUser}</h4>
+                    <h5>You are logged in as {this.state.LoggedInUser}</h5>
                     <button onClick={()=> this.logOut()} className='buttonDelete'>Logout</button>
                 </>
             )

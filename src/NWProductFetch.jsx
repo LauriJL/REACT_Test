@@ -185,25 +185,23 @@ class NWProductFetch extends Component {
     }
     else if (this.state.visible === "addForm") {
       return (
-        <div className="box1">         
+        <div className='maindiv'>         
           <h2>Add New Product</h2>
           <div>
-            <button className="button" onClick={this.handleClickTable}>Browse Products</button>
+            <button className="button" onClick={this.handleClickTable}>Back to Products</button>
             <button className="button" onClick={this.handleClickHelp}>Help</button>
           </div>
-
-          {/* <NWCustomerAdd /> */}
           {this.state.renderChildAdd ? <NWProductAdd unmountMe={this.handleChildUnmountAdd} /> : null}
         </div>
       );
     } 
     else if (this.state.visible === "editForm") {
       return (
-        <div className="box1">
+        <div className='maindiv'>
           <h2>Edit Product Data</h2>
           <div>
-            <button onClick={this.handleClickTable}>Browse Products</button>
-            <button onClick={this.handleClickHelp}>Help</button>
+            <button className="button" onClick={this.handleClickTable}>Back to Products</button>
+            <button className="button" onClick={this.handleClickHelp}>Help</button>
           </div>
           {this.state.renderChildEdit ? <NWProductEdit tuoteObj={this.state.yksiTuote} unmountMe={this.handleChildUnmountEdit} /> : null}
         </div>
@@ -211,10 +209,10 @@ class NWProductFetch extends Component {
     }
     else if (this.state.visible === "deleteForm") {
       return (
-        <div className="box1">
+        <div className='maindiv'>
           <h2>Delete Product</h2>
           <div>
-            <button className="button" onClick={this.handleClickTable}>Browse Customers</button>
+            <button className="button" onClick={this.handleClickTable}>Back to Products</button>
             <button className="button" onClick={this.handleClickHelp}>Help</button>
           </div>
           {this.state.renderChildDelete ? <NWProductDelete tuoteObj={this.state.removeProduct} unmountMe={this.handleChildUnmountDelete} /> : null}

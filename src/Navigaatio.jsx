@@ -12,6 +12,7 @@ class Navigaatio extends Component {
     return (
         <Router>
             <div>
+              <br/>
               <h1 className='h1'>Northwind React Application 2020</h1>
               <br/>
               <h4 className='h4'><Login /></h4>
@@ -24,7 +25,6 @@ class Navigaatio extends Component {
                 {/* <li><Link to={'/Helpit'} className="nav-link">Help</Link></li> */}
               </ul>
               </nav>
-              <hr />
               <Switch>
                   <Route exact path='/' component={AnalogWatch} />
                   <Route path='/NWCustomerFetch' component={NWCustomerFetch} />

@@ -153,17 +153,17 @@ class NWProductEdit extends Component {
 
     render() {
         return (
-        <form className="box3" onSubmit={this.handleSubmit}>
-            <input type="text" value={this.state.ProductName} placeholder="Enter product name" onChange={this.handleChangeProductName} />  
-            <input type="text" value={this.state.SupplierID} placeholder="Enter supplier ID" onChange={this.handleChangeSupplierID} />    
-            <input type="text" value={this.state.CategoryID} placeholder="Enter category ID" onChange={this.handleChangeCategoryID} />   
-            <input type="text" value={this.state.QuantityPerUnit} placeholder="Enter quantity per unit" onChange={this.handleChangeQuantityPerUnit} />   
-            <input type="text" value={this.state.UnitPrice} placeholder="Enter unit price" onChange={this.handleChangeUnitPrice} />               
-            <input type="text" value={this.state.UnitsInStock} placeholder="Enter number of units in stock" onChange={this.handleChangeUnitsInStock} />   
-            <input type="text" value={this.state.UnitsOnOrder} placeholder="Enter number of units on order" onChange={this.handleChangeUnitsOnOrder} />   
-            <input type="text" value={this.state.ReorderLevel} placeholder="Enter reorder level" onChange={this.handleChangeReorderLevel} />  
+        <form className="formSmall" onSubmit={this.handleSubmit}>
+            <p><input type="text" className='inputForm' value={this.state.ProductName} style={{marginTop:'10px'}} placeholder="Product name" onChange={this.handleChangeProductName} /> </p>
+            <p><input type="text" className='inputForm' value={this.state.SupplierID} placeholder="Supplier ID" onChange={this.handleChangeSupplierID} /> </p>   
+            <p><input type="text" className='inputForm' value={this.state.CategoryID} placeholder="Category ID" onChange={this.handleChangeCategoryID} /> </p>  
+            <p><input type="text" className='inputForm' value={this.state.QuantityPerUnit} placeholder="Quantity per unit" onChange={this.handleChangeQuantityPerUnit} /></p>   
+            <p><input type="text" className='inputForm' value={this.state.UnitPrice} placeholder="Unit price" onChange={this.handleChangeUnitPrice} /></p>               
+            <p><input type="text" className='inputForm' value={this.state.UnitsInStock} placeholder="Number of units in stock" onChange={this.handleChangeUnitsInStock} /></p>   
+            <p><input type="text" className='inputForm' value={this.state.UnitsOnOrder} placeholder="Number of units on order" onChange={this.handleChangeUnitsOnOrder} /></p>   
+            <p><input type="text" className='inputForm' value={this.state.ReorderLevel} placeholder="Reorder level" onChange={this.handleChangeReorderLevel} /></p>  
             <br/>
-            <p><b>Discontinued</b> &nbsp;
+            <p className='text' style={{marginLeft:'10px'}}><b>Discontinued</b> &nbsp;
             <label>
                 <input type="radio" value="false" checked={this.state.Discontinued === 'false'} onChange={this.handleChangeDiscontinued}/>
                 No         
@@ -172,7 +172,7 @@ class NWProductEdit extends Component {
                 <input type="radio" value="true" checked={this.state.Discontinued === 'true'} onChange={this.handleChangeDiscontinued}/>
                 Yes
             </label> </p> 
-            <button type="submit">Save Changes</button> 
+            <button type="submit" className='buttonAdd' style={{marginLeft:'10px'}}>Save Changes</button> 
         </form>
         );
     }

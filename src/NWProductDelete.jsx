@@ -153,20 +153,20 @@ class NWProductDelete extends Component {
 
     render() {
         return (
-            <form className="box1" onSubmit={this.handlePerformDelete}>    
-            <table id="deletetbl">  
-                <tr><td className="otsikko">Product ID:</td><td>{this.state.ProductID}</td></tr>
-                <tr><td className="otsikko">Product Name:</td><td>{this.state.ProductName}</td></tr>
-                <tr><td className="otsikko">Category ID:</td><td>{this.state.CategoryID} </td></tr> 
-                <tr><td className="otsikko">Quantity per Unit:</td><td>{this.state.QuantityPerUnit} </td></tr>
-                <tr><td className="otsikko">Unit Price:</td><td>{this.state.UnitPrice} </td></tr>
-                <tr><td className="otsikko">Units in Stock:</td><td>{this.state.UnitsInStock} </td></tr>           
-                <tr><td className="otsikko">Units on Order:</td><td>{this.state.UnitsOnOrder} </td></tr>
-                <tr><td className="otsikko">Reorder Level:</td><td>{this.state.ReorderLevel} </td></tr>
-                <tr><td className="otsikko">Discontinued:</td><td>{this.state.Discontinued.toString()} </td></tr> 
+            <form className="formDelete" onSubmit={this.handlePerformDelete}>    
+            <table style={{marginLeft:'10px'}}>  
+                <tr className="text"><td>Product ID:</td><td>{this.state.ProductID}</td></tr>
+                <tr className="text"><td>Product Name:</td><td>{this.state.ProductName}</td></tr>
+                <tr className="text"><td>Category ID:</td><td>{this.state.CategoryID} </td></tr> 
+                <tr className="text"><td>Quantity per Unit:</td><td>{this.state.QuantityPerUnit} </td></tr>
+                <tr className="text"><td>Unit Price:</td><td>{this.state.UnitPrice} </td></tr>
+                <tr className="text"><td>Units in Stock:</td><td>{this.state.UnitsInStock} </td></tr>           
+                <tr className="text"><td>Units on Order:</td><td>{this.state.UnitsOnOrder} </td></tr>
+                <tr className="text"><td>Reorder Level:</td><td>{this.state.ReorderLevel} </td></tr>
+                <tr className="text"><td>Discontinued:</td><td>{this.state.Discontinued.toString()} </td></tr> 
             </table>   
             <br/>
-            <button className="button" type="submit">Delete</button>
+            <button className="buttonDelete" type="submit" style={{marginLeft:'10px'}}>Delete</button>
         </form>
         );
     }

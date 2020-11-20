@@ -31,8 +31,10 @@ class AnalogWatch extends Component {
     render() {
         //console.log("AnalogWatch: tultiin render-metodiin");
         return (
-            <div className="analogikello">
-                <Clock value={this.state.pvm} size={300} hourMarksLength={20} />
+            <div className="analogWatch" >
+                <br/>
+                <Clock value={this.state.pvm} size={400} hourMarksLength={20} />
+                <br/>
             </div>
     );
   }

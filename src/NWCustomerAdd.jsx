@@ -147,7 +147,7 @@ class NWCustomerAdd extends Component {
     render(){
         return(
             // Lomake
-            <form className="form" onSubmit={this.handleSubmit}>
+            <form className="formMedium" onSubmit={this.handleSubmit}>
                 <p><input className='inputForm' type="text" style={{marginTop:'10px'}} placeholder="CustomerID" onChange={this.handleChangeCustomerID}/></p>
                 <p><input className='inputForm' type="text" placeholder="CompanyName" onChange={this.handleChangeCompanyName}/></p>
                 <p><input className='inputForm' type="text" placeholder="ContactName" onChange={this.handleChangeContactName}/></p>

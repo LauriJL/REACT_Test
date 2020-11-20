@@ -168,21 +168,29 @@ tr:nth-child(even) {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.form {
+.formSmall {
   background-color: lightblue;
   border-radius: 10px;
   width: 350px;
-  height: 650px;
+  height: auto;
   float: left;
 }
 
-.formLarge {
+.formMedium {
+  background-color: lightblue;
+  border-radius: 10px;
+  width: 350px;
+  height: auto;
+  float: left;
+}
+
+.formDelete {
   background-color: transparent;
-  border: solid 2px;
+  border: solid 3px;
   border-color: red;
   border-radius: 10px;
   width: 450px;
-  height: 780px;
+  height: auto;
   float: left;
 }
 
@@ -199,9 +207,10 @@ tr:nth-child(even) {
   margin-top:5px;
   font-size: large;
 }
-.box4 {
-  background-color: antiquewhite;
-  width: 700px;
-  height:1200px;
-  float: left;
+
+.analogWatch {
+  position:absolute; 
+  left:50%;
+  top:50%;
+  transform:translate(-50%, -50%);
 }

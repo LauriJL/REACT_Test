@@ -162,8 +162,8 @@ class NWCustomerEdit extends Component {
 
     render() {
         return (
-        <form className="form" onSubmit={this.handleSubmit}>        
-            <p><input type="text" className='inputForm' style={{marginTop:'10px'}} value={this.state.CustomerID} title="Syötä asiakastunnus" placeholder="CustomerID" onChange={this.handleChangeCustomerID} /></p>    
+        <form className="formSmall" onSubmit={this.handleSubmit}>        
+            <p><input type="text" className='inputForm' style={{marginTop:'10px'}} value={this.state.CustomerID} placeholder="CustomerID" onChange={this.handleChangeCustomerID} /></p>    
             <p><input type="text" className='inputForm' value={this.state.CompanyName} placeholder="CompanyName" onChange={this.handleChangeCompanyName} /></p>
             <p><input type="text" className='inputForm' value={this.state.ContactName} placeholder="ContactName" onChange={this.handleChangeContactName} /></p>   
             <p><input type="text" className='inputForm' value={this.state.ContactTitle} placeholder="ContactTitle" onChange={this.handleChangeContactTitle} /></p>   
