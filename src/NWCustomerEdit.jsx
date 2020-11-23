@@ -158,10 +158,9 @@ class NWCustomerEdit extends Component {
     render() {
         return (
             <>
-            <h5>Note: You need to be logged in in order to be able to edit customer data.</h5>
             <form className="formSmall" onSubmit={this.handleSubmit}>        
-                <p><input type="text" className='inputForm' style={{marginTop:'10px'}} value={this.state.CustomerID} placeholder="CustomerID" onChange={this.handleChangeCustomerID} /></p>    
-                <p><input type="text" className='inputForm' value={this.state.CompanyName} placeholder="CompanyName" onChange={this.handleChangeCompanyName} /></p>
+                <p hidden><input type="text" className='inputForm' style={{marginTop:'10px'}} value={this.state.CustomerID} placeholder="CustomerID" onChange={this.handleChangeCustomerID} /></p>    
+                <p><input type="text" className='inputForm' style={{marginTop:'10px'}} value={this.state.CompanyName} placeholder="CompanyName" onChange={this.handleChangeCompanyName} /></p>
                 <p><input type="text" className='inputForm' value={this.state.ContactName} placeholder="ContactName" onChange={this.handleChangeContactName} /></p>   
                 <p><input type="text" className='inputForm' value={this.state.ContactTitle} placeholder="ContactTitle" onChange={this.handleChangeContactTitle} /></p>   
                 <p><input type="text" className='inputForm' value={this.state.Address} placeholder="Address" onChange={this.handleChangeAddress} /></p>   

@@ -157,7 +157,6 @@ class NWCustomerDelete extends Component {
     render() {
         return (
             <>
-            <h5>Note: You need to be logged in in order to be able to delete customers.</h5>
             <form className="formDelete" onSubmit={this.handlePerformDelete}>        
             <table style={{marginLeft:'10px'}}>  
                     <tr className="text"><td >Customer ID:</td><td>{this.state.customerId}</td></tr>

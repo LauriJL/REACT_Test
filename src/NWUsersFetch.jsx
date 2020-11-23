@@ -194,6 +194,7 @@ class NWUsersFetch extends Component {
       return (
         <div className='maindiv'>
         <h2>Users</h2>
+        <h5>Note: You need to be logged in in order to be able to view, add, edit or remove users.</h5>
         <p>{viesti}</p>
         <p className='text'>Search by first name: <input type="text" placeholder="Enter first name" title="Find user" value={this.state.firstname} onChange={this.handleChangeFirstName}/></p>
         <p className='text'>Search by last name: <input type="text" placeholder="Enter last name" title="Find user" value={this.state.lastname} onChange={this.handleChangeLastName}/></p>
