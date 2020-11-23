@@ -67,17 +67,16 @@ class NWUserEdit extends Component {
     }
 
     handleSubmit(e){
-        //alert('Päivitettävä tuote: ' + this.state.ProductID);
         e.preventDefault();
         this.UpdateDatabase();
     }
 
     // callBackRoutine() {
-    //     console.log('NWProductEDIT: . . . . callBackRoutine >>>---' + this.state.tuoteObj.ProductID);											  
+    //     console.log('NWUserEDIT: . . . . callBackRoutine >>>---' + this.state.loginObj.ProductID);											  
     // }
 
     componentDidMount() {
-        //console.log("NWProductEDIT-componentDidMount this.props.tuoteObj.productId: " + this.props.tuoteObj.productId);
+        //console.log("NWUserEDIT-componentDidMount this.props.loginObj.productId: " + this.props.loginObj.productId);
         this.setState({
             LoginID: this.props.loginObj.loginId,
             FirstName: this.props.loginObj.firstname,
@@ -89,9 +88,9 @@ class NWUserEdit extends Component {
             );
      }
 
-    //Päivitys kantaan
+    //Update database
     UpdateDatabase() {
-        // Luodaan tuoteobjekti, johon haetaan state:sta tiedot                     
+        let jwttoken = localStorage.getItem('token');                 
         const kayttaja = {
             LoginID: this.state.LoginID,
             FirstName: this.state.FirstName,
@@ -103,14 +102,14 @@ class NWUserEdit extends Component {
         };
         //send an asynchronous request to the backend
         const kayttajaJson = JSON.stringify(kayttaja);
-        //console.log("tuoteJson = " + tuoteJson);
         const apiUrl= 'https://localhost:5001/northwind/logins/update/'+ this.state.LoginID
         console.log(apiUrl);
         fetch(apiUrl, {
             method: "PUT",
             headers: {
-            "Accept": "application/json",
-            "Content-Type": "application/json"
+                Authorization:"Bearer "+jwttoken,
+                "Accept": "application/json",
+                "Content-Type": "application/json"
             },
             body: kayttajaJson
         }).then((response) => response.json())
@@ -118,7 +117,6 @@ class NWUserEdit extends Component {
                 const success = json;
                 console.log(`Response from server: ${success}.`);
                 if (success) {
-                    console.log("Pyyntö tuotteen päivittämiseksi tehty -- -- -- -- --");
                     this.dismiss();
                 }
             });

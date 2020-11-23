@@ -8,7 +8,6 @@ class NWProductFetch extends Component {
 
   constructor(props) {
     super(props);
-    //console.log("NWProductFetch-komponentti: constructor");
     this.state = { 
         tuotteet: [],
         recordcount:0 ,
@@ -40,18 +39,15 @@ class NWProductFetch extends Component {
 
   handleClickNext = (event) => {
     this.setState({page: this.state.page+10},this.handleSubmit);
-    // this.setState({start: this.state.start+10},this.handleSubmit);
   }
 
   handleChangeProductName(e){
     let input = e.target.value;
-    //console.log(input);
     this.setState({product:input},this.handleSubmit);
   }
 
   handleChangeSupplierId(e){
     let input = e.target.value;
-    //console.log(input);
     this.setState({supplierid:input},this.handleSubmit);
   }
 
@@ -60,7 +56,6 @@ class NWProductFetch extends Component {
   }
 
   componentDidMount() {
-    //console.log("NWProductFetch-komponentti: componentDidMount");
     this.HaeTuotteetNWRestApista();
   }
 
@@ -122,19 +117,16 @@ class NWProductFetch extends Component {
     }
     else {
       uri = 'https://localhost:5001/northwind/products/r?page=' + this.state.page + '&limit=' + this.state.take;
-      //console.log("Retrieving from REST API without country " + uri);
     }
     fetch(uri)
     .then(response => response.json())
     .then(json => {
-        //console.log(json);
         this.setState({ tuotteet: json, recordcount: json.length }); 
     });
   }
 
   render() {
-    //console.log("NWProductFetch-komponentti: render");
-    let viesti = this.state.recordcount + " rows";
+    let viesti = "";
     let taulukko = [];
     let tHeaders = "";
     if (this.state.tuotteet.length > 0) {
@@ -166,7 +158,6 @@ class NWProductFetch extends Component {
       return(
         <div className='maindiv'>
           <h2 >Products</h2>
-          {/* <h4>{viesti}</h4> */}
           <br/>
           <p className='text'>Search by product name: <input type="text" placeholder="Enter product name" title="Find product" value={this.state.product} onChange={this.handleChangeProductName}/></p>
           <p className='text'>Filter by supplier ID: <input type="text" placeholder="Enter supplier ID" title="Find supplier" value={this.state.supplierid} onChange={this.handleChangeSupplierId}/></p>
@@ -219,10 +210,19 @@ class NWProductFetch extends Component {
         </div>
       );
     }
+    else if (this.state.visible === "help") {
+      return (
+        <div className="help">
+          <h2 className='h2'>Products</h2>
+          <p className='text' style={{marginLeft:'10px'}}>Browse, add, modify and delete products by using the appropriate buttons.</p>
+          <button class="button" onClick={this.handleClickTable} style={{marginLeft:'10px'}}>Back to Products</button>
+        </div>
+      );      
+    }
     else {
       return(
         <div>
-        <h1>SApplication error! Reload page.</h1>
+        <h1>Application error! Reload page.</h1>
       </div>
       );
     }

@@ -89,7 +89,6 @@ class NWProductEdit extends Component {
     }
 
     handleSubmit(e){
-        //alert('Päivitettävä tuote: ' + this.state.ProductID);
         e.preventDefault();
         this.UpdateDatabase();
     }
@@ -114,9 +113,8 @@ class NWProductEdit extends Component {
             );
      }
 
-    //Päivitys kantaan
-    UpdateDatabase() {
-        // Luodaan tuoteobjekti, johon haetaan state:sta tiedot                     
+    //Update database
+    UpdateDatabase() {                 
         const tuote = {ProductID: this.state.ProductID,
             ProductName: this.state.ProductName,
             SupplierID: this.state.SupplierID,
@@ -130,7 +128,6 @@ class NWProductEdit extends Component {
         };
         //send an asynchronous request to the backend
         const tuoteJson = JSON.stringify(tuote);
-        //console.log("tuoteJson = " + tuoteJson);
         const apiUrl= 'https://localhost:5001/northwind/products/update/'+ this.state.ProductID
         console.log(apiUrl);
         fetch(apiUrl, {

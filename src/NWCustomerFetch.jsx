@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './App.css';
-// import Helpit from './Helpit.jsx'
 import NWCustomerAdd from './NWCustomerAdd.jsx';
 import NWCustomerEdit from './NWCustomerEdit.jsx';
 import NWCustomerDelete from './NWCustomerDelete.jsx';
@@ -112,10 +111,8 @@ class NWCustomerFetch extends Component {
     let uri = "";
     if (this.state.country !== ""){
       uri = 'https://localhost:5001/northwind/customers/r?page='+this.state.page+'&limit='+this.state.take+'&country='+this.state.country;
-      //console.log("Retrieving from REST API " + uri);
     } else {
       uri = 'https://localhost:5001/northwind/customers/r?page='+this.state.page+'&limit='+this.state.take;
-      //console.log("Retrieving from REST API without country " + uri);
     }   
     fetch(uri, {
       method:"GET",
@@ -128,19 +125,17 @@ class NWCustomerFetch extends Component {
     .then((response) => response.json())
     .then((json) => {
         const logindata = json;
-        this.setState({ asiakkaat: logindata }); //Viedään tulosjoukko (json) setState-komennolla asiakkaat -olioon
+        this.setState({ asiakkaat: logindata })
     }
     )
   }
 
   render() {
-    //console.log("NWCustomerFetch-komponentti: render");
     let viesti = "";
     let taulukko = [];
     let tHeaders = "";
     if (this.state.asiakkaat.length > 0) {
-        //Luodaan taulukon otsikot
-        tHeaders = <tr><th>Customer ID</th><th>Company Name</th><th>Contact Name</th><th>Address</th><th>City</th><th>Country</th><th>Muokkaa</th><th>Poista</th></tr>
+        tHeaders = <tr><th>Customer ID</th><th>Company Name</th><th>Contact Name</th><th>Address</th><th>City</th><th>Country</th><th>Edit</th><th>Delete</th></tr>
         for (let index = 0; index < this.state.asiakkaat.length; index++) {
             const element = this.state.asiakkaat[index];
             taulukko.push(<tr key={element.customerId}>
@@ -156,7 +151,7 @@ class NWCustomerFetch extends Component {
       }
     }
     else {
-      viesti = "You do not have access to this data."
+      viesti = "Retrieving data from database..."
     }
 
     if (this.state.visible === "table") {
@@ -167,8 +162,7 @@ class NWCustomerFetch extends Component {
         <input type="text" placeholder="Filter by country" title="Filter customers by country" value={this.state.country} onChange={this.handleChangeCountry}/>
         <br/>
         <br/>
-        {/* <button className="button" onClick={this.handleClickHelp}>Help</button> */}
-        <button className="button" onClick={this.handleClickAdd} className="buttonAdd">Add New Customer</button>
+        <button className="buttonAdd" onClick={this.handleClickAdd}>Add New Customer</button>
         <br/>
         <button className="button" onClick={this.handleClickPrev}>&#8592; Previous</button>
         <button className="button" onClick={this.handleClickNext}>Next &#8594;</button>
@@ -215,16 +209,15 @@ class NWCustomerFetch extends Component {
         </div>
       );
     }
-    // else if (this.state.visible === "help") {
-    //   return (
-    //     <div className="box2">
-    //       <h2>Sovelluksen opasteet</h2>
-    //       <button class="button" onClick={this.handleClickTable}>Browse customers</button>
-    //       <button class="button" onClick={this.handleClickAdd}>Add new customer</button>
-    //       <Helpit moduli="NWCustomerFetch"/>
-    //     </div>
-    //   );      
-    // } 
+    else if (this.state.visible === "help") {
+      return (
+        <div className="help">
+          <h2 className='h2'>Customers</h2>
+          <p className='text' style={{marginLeft:'10px'}}>Browse, add, modify and delete customers by using the appropriate buttons.</p>
+          <button class="button" onClick={this.handleClickTable} style={{marginLeft:'10px'}}>Back to Customers</button>
+        </div>
+      );      
+    } 
     else {
       return(
         <div className="box1">

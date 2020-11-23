@@ -3,7 +3,7 @@ import './App.css';
 
 class NWProductAdd extends Component {
 
-    // Konstruktori
+    // Constructor
     constructor(props){
         super(props);
         this.state = { 
@@ -90,7 +90,7 @@ class NWProductAdd extends Component {
 
     // Kantaan vienti
     InsertToDatabase(){
-        //Luodaan JS objekti tuotetta varten. Tiedot objektiin haetaan state:sta.
+        //Create JS object for product. object data retrieved from state.
         const tuote = {
             ProductName: this.state.ProductName,
             SupplierID: this.state.SupplierID,
@@ -103,13 +103,11 @@ class NWProductAdd extends Component {
             Discontinued: this.state.Discontinued
         };
         
-        //Luodaan asiakas JSON
+        //Create product JSON
         const tuoteJSON = JSON.stringify(tuote);
 
-        //API-kutsu: viedään data kantaan fetchillä.
-        //console.log('tuoteJSON = ' + tuoteJSON);
+        //API call: insert data to databse with fetch.
         const apiURL = 'https://localhost:5001/northwind/Products/add/';
-        //const apiURL = 'https://localhost:5001/northwind/Customers';
         fetch(apiURL, {
             method: "POST",
             headers: {
@@ -122,7 +120,6 @@ class NWProductAdd extends Component {
         .then((json) => {
             //Store data returned from backend to the current state
             const success = json;
-            //console.log(`Response from server: ${success}.`);
             if (success){
                 this.dismiss();
             }

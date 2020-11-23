@@ -95,7 +95,6 @@ class NWCustomerDelete extends Component {
     }
 
     handleSubmit(e){
-        //alert('Poistettava asiakas: ' + this.state.CustomerID);
         e.preventDefault();
         this.UpdateDatabase();
     }
@@ -149,7 +148,6 @@ class NWCustomerDelete extends Component {
                 const success = json;
                 console.log(`Response from server: ${success}.`);
                 if (success) {
-                //console.log("Pyyntö asiakkaan poistamiseksi tehty -- -- -- -- --");
                 this.dismiss(); 
                 //this.ResetDeleteDone();
                 }
@@ -158,23 +156,26 @@ class NWCustomerDelete extends Component {
 
     render() {
         return (
-        <form className="formDelete" onSubmit={this.handlePerformDelete}>        
-           <table style={{marginLeft:'10px'}}>  
-                <tr className="text"><td >Customer ID:</td><td>{this.state.customerId}</td></tr>
-                <tr className="text"><td>Company Name:</td><td>{this.state.CompanyName}</td></tr>
-                <tr className="text"><td>Contact Name:</td><td>{this.state.ContactName} </td></tr> 
-                <tr className="text"><td>Contact Title:</td><td>{this.state.ContactTitle} </td></tr>
-                <tr className="text"><td>Address:</td><td>{this.state.Address} </td></tr>
-                <tr className="text"><td>City:</td><td>{this.state.City} </td></tr>           
-                <tr className="text"><td>Region:</td><td>{this.state.Region} </td></tr>
-                <tr className="text"><td>Postal Code:</td><td>{this.state.PostalCode} </td></tr>
-                <tr className="text"><td>Country:</td><td>{this.state.Country} </td></tr>
-                <tr className="text"><td>Phone:</td><td>{this.state.Phone} </td></tr>
-                <tr className="text"><td>Fax:</td><td>{this.state.Fax} </td></tr> 
-            </table>   
-            <br/>
-            <button className="buttonDelete" type="submit" style={{marginLeft:'10px'}}>Delete</button>
-        </form>
+            <>
+            <h5>Note: You need to be logged in in order to be able to delete customers.</h5>
+            <form className="formDelete" onSubmit={this.handlePerformDelete}>        
+            <table style={{marginLeft:'10px'}}>  
+                    <tr className="text"><td >Customer ID:</td><td>{this.state.customerId}</td></tr>
+                    <tr className="text"><td>Company Name:</td><td>{this.state.CompanyName}</td></tr>
+                    <tr className="text"><td>Contact Name:</td><td>{this.state.ContactName} </td></tr> 
+                    <tr className="text"><td>Contact Title:</td><td>{this.state.ContactTitle} </td></tr>
+                    <tr className="text"><td>Address:</td><td>{this.state.Address} </td></tr>
+                    <tr className="text"><td>City:</td><td>{this.state.City} </td></tr>           
+                    <tr className="text"><td>Region:</td><td>{this.state.Region} </td></tr>
+                    <tr className="text"><td>Postal Code:</td><td>{this.state.PostalCode} </td></tr>
+                    <tr className="text"><td>Country:</td><td>{this.state.Country} </td></tr>
+                    <tr className="text"><td>Phone:</td><td>{this.state.Phone} </td></tr>
+                    <tr className="text"><td>Fax:</td><td>{this.state.Fax} </td></tr> 
+                </table>   
+                <br/>
+                <button className="buttonDelete" type="submit" style={{marginLeft:'10px'}}>Delete</button>
+            </form>
+        </>
         );
     }
 }

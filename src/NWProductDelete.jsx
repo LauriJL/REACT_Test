@@ -88,7 +88,6 @@ class NWProductDelete extends Component {
     }
 
     handleSubmit(e){
-        //alert('Päivitettävä tuote: ' + this.state.ProductID);
         e.preventDefault();
         this.UpdateDatabase();
     }

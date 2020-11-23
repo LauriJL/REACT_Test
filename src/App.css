@@ -73,7 +73,7 @@ tr:nth-child(even) {
 }
 
 .navlink {
-  font-size: larger;
+  font-size: xx-large;
   font-weight: bold;
   color:black;
   margin-right: 20px;;
@@ -194,6 +194,17 @@ tr:nth-child(even) {
   float: left;
 }
 
+.help {
+  margin-left: 10px;
+  background-color: rgb(214, 240, 173);
+  border: solid 3px;
+  border-color:blue;
+  border-radius: 10px;
+  width: 450px;
+  height: auto;
+  float: left;
+}
+
 .edit {
   background-color: lightblue;
   border-radius: 10px;
@@ -211,6 +222,6 @@ tr:nth-child(even) {
 .analogWatch {
   position:absolute; 
   left:50%;
-  top:50%;
+  top:60%;
   transform:translate(-50%, -50%);
 }

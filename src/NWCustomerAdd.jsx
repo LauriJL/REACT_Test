@@ -96,15 +96,13 @@ class NWCustomerAdd extends Component {
     }
 
     handleSubmit(e){
-        //alert(this.state.CustomerID + ' lisätty kantaan.');
         e.preventDefault();
         this.InsertToDatabase();
     }
 
-    // Kantaan vienti
+    //Update database
     InsertToDatabase(){
         let jwttoken = localStorage.getItem('token');
-        //Luodaan JS objekti asiakasta varten. Tiedot objektiin haetaan state:sta.
         const asiakas = {customerID: this.state.CustomerID,
                         companyName: this.state.CompanyName,
                         contactName: this.state.ContactName,
@@ -117,11 +115,10 @@ class NWCustomerAdd extends Component {
                         phone: this.state.Phone,
                         fax: this.state.Fax};
         
-        //Luodaan asiakas JSON
+        //Create customer JSON
         const asiakasJSON = JSON.stringify(asiakas);
 
-        //API-kutsu: viedään data kantaan fetchillä.
-        //console.log('asiakasJSON = ' + asiakasJSON);
+        //API-call: insert data to database with fetch
         const apiURL = 'https://localhost:5001/northwind/Customers/add';
 
         fetch(apiURL, {
@@ -146,7 +143,8 @@ class NWCustomerAdd extends Component {
 
     render(){
         return(
-            // Lomake
+            <>
+            <h5>Note: You need to be logged in in order to be able to add new customers.</h5>
             <form className="formMedium" onSubmit={this.handleSubmit}>
                 <p><input className='inputForm' type="text" style={{marginTop:'10px'}} placeholder="CustomerID" onChange={this.handleChangeCustomerID}/></p>
                 <p><input className='inputForm' type="text" placeholder="CompanyName" onChange={this.handleChangeCompanyName}/></p>
@@ -161,6 +159,7 @@ class NWCustomerAdd extends Component {
                 <p><input className='inputForm' type="text" placeholder="Fax" onChange={this.handleChangeFax}/></p>
                 <p><button type="submit" className='buttonAdd' style={{marginLeft:'10px'}}>Save</button></p>
             </form>
+            </>
         );
     }
 }

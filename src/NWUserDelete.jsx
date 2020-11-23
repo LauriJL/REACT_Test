@@ -68,7 +68,6 @@ class NWUserDelete extends Component {
     }
 
     handleSubmit(e){
-        //alert('Päivitettävä käyttäjä: ' + this.state.LoginID);
         e.preventDefault();
         this.UpdateDatabase();
     }
@@ -91,13 +90,11 @@ class NWUserDelete extends Component {
         }
   
     handlePerformDelete(event) {
-        console.log('handlePerformDelete >>>>>', this.state.LoginID)
         event.preventDefault();
         this.NWDeleteUserFromRestApi();
         }
 
     ResetDeleteDone() {
-        console.log('ResetDeleteDone ???????????????');
         this.setState({
             LoginID: '', 
         })
@@ -107,11 +104,13 @@ class NWUserDelete extends Component {
 
     //Delete from database
     NWDeleteUserFromRestApi() {
+        let jwttoken = localStorage.getItem('token');
         let apiUrl = 'https://localhost:5001/northwind/logins/delete/' + this.state.LoginID;
-        console.log("NWDeleteUserFromRestApi " + apiUrl);
         fetch(apiUrl, {
+            Authorization:"Bearer "+jwttoken,
             method: "DELETE",
             headers: {
+                Authorization:"Bearer "+jwttoken,
                 "Accept": "application/json",
                 "Content-Type": "application/json"
             },
@@ -119,7 +118,6 @@ class NWUserDelete extends Component {
         }).then((response) => response.json())
             .then((json) => {
                 const success = json;
-                console.log(`Response from server: ${success}.`);
                 if (success) {
                    this.dismiss(); 
                    //this.ResetDeleteDone();

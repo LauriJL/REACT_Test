@@ -74,6 +74,7 @@ class NWUserAdd extends Component {
 
     // Kantaan vienti
     InsertToDatabase(){
+        let jwttoken = localStorage.getItem('token');
         //Luodaan JS objekti tuotetta varten. Tiedot objektiin haetaan state:sta.
         const kayttaja = {
             // LoginID: this.state.LoginID,
@@ -94,6 +95,7 @@ class NWUserAdd extends Component {
         fetch(apiURL, {
             method: "POST",
             headers: {
+                Authorization:"Bearer "+jwttoken,
                 "Accept": "application/json",
                 "Content-Type": "application/json"
             },

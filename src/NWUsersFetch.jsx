@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './App.css';
-import Helpit from './Helpit';
 import NWUserAdd from './NWUserAdd';
 import NWUserEdit from './NWUserEdit';
 import NWUserDelete from './NWUserDelete';
@@ -43,14 +42,12 @@ class NWUsersFetch extends Component {
   }
 
   handleChildUnmountEdit(){
-    //console.log("Ollaan NWCustomerFetch -handleChildUnmountEdit-rutiinissa - - - - - - ");
     this.setState({renderChild: false});
     this.handleClickTable();
     this.HaeKayttajatNWRestApista();
   }
 
     handleChildUnmountDelete(){
-    //console.log("Ollaan NWCustomerFetch -handleChildUnmountDelete-rutiinissa - - - - - - ");
     this.setState({renderChildDelete: false});
     this.handleClickTable();
     this.HaeKayttajatNWRestApista();
@@ -73,8 +70,6 @@ class NWUsersFetch extends Component {
   }
 
   handleClickDelete = (loginObj,event) => {
-    console.log('HandleClickDelete >>>>>>', loginObj)
-    //alert("Poistetaan käyttäjä: ", loginObj);
     this.setState({
       removeUser: loginObj, 
       visible: "deleteForm", 
@@ -120,33 +115,37 @@ class NWUsersFetch extends Component {
   }
 
   HaeKayttajatNWRestApista() {
+    let jwttoken = localStorage.getItem('token');
     let uri = "";
     if (this.state.firstname !== "") {
       uri = 'https://localhost:5001/northwind/logins/r?page='+this.state.page+'&limit='+this.state.take+'&firstname='+this.state.firstname;
-      //console.log("Retrieving from REST API " + uri);
     } else if (this.state.lastname !== "") {
       uri = 'https://localhost:5001/northwind/logins/r?page='+this.state.page+'&limit='+this.state.take+'&lastname='+this.state.lastname;
-      //console.log("Retrieving from REST API " + uri);
     }
     else if (this.state.accesslevel !== "") {
       uri = 'https://localhost:5001/northwind/logins/r?page='+this.state.page+'&limit='+this.state.take+'&accesslevel='+this.state.accesslevel;
-      //console.log("Retrieving from REST API " + uri);
     } 
     else {
       uri = 'https://localhost:5001/northwind/logins/r?page='+this.state.page+'&limit='+this.state.take;
       console.log("Retrieving from REST API without country " + uri);
     }   
-    fetch(uri)
-    .then(response => response.json())
-    .then(json => {
-        //console.log(json);
-        this.setState({ kayttajat: json }); //Viedään tulosjoukko (json) setState-komennolla asiakkaat -olioon
-    });
+    fetch(uri, {
+      method:"GET",
+      headers:{
+        Authorization:"Bearer "+jwttoken,
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+      }
+    })
+    .then((response) => response.json())
+    .then((json) => {
+      const logindata = json;
+      this.setState({ kayttajat: logindata })
+  });
   }
 
   NWDeleteRestApista() {
     let apiUrl = 'https://localhost:5001/northwind/loginss/delete/'+this.state.LoginID2Del;
-    //console.log("NWDeleteRestApista " + apiUrl);
     fetch(apiUrl, {
         method: "DELETE",
         headers: {
@@ -159,7 +158,6 @@ class NWUsersFetch extends Component {
             const success = json;
             console.log(`Response from server: ${success}.`);
             if (success) {
-               //console.log("Pyyntö asiakkaan poistamiseksi tehty -- -- -- -- --");
                //this.dismiss(); 
                this.ResetDeleteDone();
             }
@@ -172,7 +170,6 @@ class NWUsersFetch extends Component {
     let taulukko = [];
     let tHeaders = "";
     if (this.state.kayttajat.length > 0) {
-        //Luodaan taulukon otsikot
         tHeaders = <tr><th>Login Id</th><th>First Name</th><th>Last Name</th><th>Email</th><th>Username</th><th>Password</th><th>Access Level</th><th>Edit</th><th>Delete</th></tr>
         for (let index = 0; index < this.state.kayttajat.length; index++) {
             const element = this.state.kayttajat[index];
@@ -219,8 +216,6 @@ class NWUsersFetch extends Component {
             <button className="button" onClick={this.handleClickTable}>Back to Users</button>
             <button className="button" onClick={this.handleClickHelp}>Help</button>
           </div>
-
-          {/* <NWCustomerAdd /> */}
           {this.state.renderChildAdd ? <NWUserAdd unmountMe={this.handleChildUnmountAdd} /> : null}
         </div>
       );
@@ -251,11 +246,11 @@ class NWUsersFetch extends Component {
     }
     else if (this.state.visible === "help") {
       return (
-        <div className="box2">
-          <h2>Sovelluksen opasteet</h2>
-          <button class="button" onClick={this.handleClickTable}>Browse Users</button>
-          <button class="buttonAdd" onClick={this.handleClickAdd}>Add User</button>
-          <Helpit moduli="NWCustomerFetch"/>
+        <div className="help">
+          <h2 className='h2'>Users</h2>
+          <p className='text' style={{marginLeft:'10px'}}>Browse, add, modify and delete users by using the appropriate buttons.</p>
+          <p  className='text' style={{marginLeft:'10px'}}>Please note, that adding, editing and deleting users requires that you log in first.</p>
+          <button class="button" onClick={this.handleClickTable} style={{marginLeft:'10px'}}>Back to Users</button>
         </div>
       );      
     } else {
